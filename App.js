@@ -9,7 +9,7 @@ export default class App extends React.Component {
       isLoading:false,
       data:null,
       temp:'',
-      city:null,
+      city:'',
       
       iconlist:[
         '',
@@ -53,6 +53,7 @@ export default class App extends React.Component {
             iconname:json.weather[0].icon,
             icon:this.state.iconlist[icon_number],
             isLoading:false
+
             }
           )
           }
@@ -64,6 +65,9 @@ export default class App extends React.Component {
         .then(()=>console.log(this.state)
         )
         .catch((e)=>console.log(e))
+    }
+    else{
+      this.setState({isLoading:false})
     }
   })
 }
@@ -93,6 +97,7 @@ check=()=>{
   }
   else if(this.state.code=='200')
   {
+    this.setState({code:''})
     return(
       <View style={{width:'100%',justifyContent:'center',alignItems:'center',height:300}}>
         <Text style={[styles.text,{marginTop:40}]}>{(this.state.json.name)}</Text>
