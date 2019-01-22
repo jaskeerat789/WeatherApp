@@ -82,6 +82,7 @@ check=()=>{
   }
   else if(this.state.code=='404')
   {
+      this.setState({code:''})
       Alert.alert(this.state.data)
       return(<View style={{width:'100%',justifyContent:'center',alignItems:'center',height:300}}>
         <Text style={[styles.text,{marginTop:40}]}>{"WELCOME"}</Text>
