@@ -67,7 +67,7 @@ export default class App extends React.Component {
         .catch((e)=>console.log(e))
     }
     else{
-      this.setState({isLoading:false})
+      this.setState({isLoading:false,})
     }
   })
 }
