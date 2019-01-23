@@ -53,8 +53,7 @@ export default class App extends React.Component {
             iconname:json.weather[0].icon,
             icon:this.state.iconlist[icon_number],
             isLoading:false
-
-            }
+          }
           )
           }
           else
@@ -78,6 +77,8 @@ clear = () => {
 check=()=>{
   if(this.state.isLoading)
   {
+    console.log('Loading');
+    
     return(
       <View style={{width:'100%',justifyContent:'center',alignItems:'center',height:300}}>
       <ActivityIndicator size='large' color='white' />
@@ -86,7 +87,7 @@ check=()=>{
   }
   else if(this.state.code=='404')
   {
-      this.setState({code:''})
+      console.log("invalid input");
       Alert.alert(this.state.data)
       return(<View style={{width:'100%',justifyContent:'center',alignItems:'center',height:300}}>
         <Text style={[styles.text,{marginTop:40}]}>{"WELCOME"}</Text>
@@ -97,7 +98,9 @@ check=()=>{
   }
   else if(this.state.code=='200')
   {
-    this.setState({code:''})
+    console.log('valid input');
+    
+    //this.setState({code:''})
     return(
       <View style={{width:'100%',justifyContent:'center',alignItems:'center',height:300}}>
         <Text style={[styles.text,{marginTop:40}]}>{(this.state.json.name)}</Text>
@@ -140,7 +143,7 @@ check=()=>{
         <View style={styles.searchbar}>
         
         <TextInput placeholder="enter here" style={styles.textInput}
-          onChangeText={(input)=>this.setState({temp:input})}
+          onChangeText={(input)=>this.setState({temp:input,code:''})}
           underlineColorAndroid='rgba(0,0,0,0)'
           clearTextOnFocus={true}
           ref={ref => this.textInputRef = ref}
